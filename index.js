@@ -8,7 +8,10 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
-const optionsCors = {origin: process.env.FRONTEND_URL}
+const optionsCors = {
+    origin: [process.env.FRONTEND_URL, 'http://localhost:3000'],
+    default: process.env.FRONTEND_URL
+};
 app.use(cors(optionsCors));
 
 app.get("/api/form", () => console.log("get"))
